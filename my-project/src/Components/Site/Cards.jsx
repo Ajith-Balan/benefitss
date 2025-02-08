@@ -12,7 +12,7 @@ const Cards = () => {
     const fetchCardDetails = async () => {
       try {
         setLoading(true);
-        const response = await axios.get("http://localhost:3003/api/getcountry"); 
+        const response = await axios.get(`${import.meta.env.VITE_APP_BACKEND}/api/getcountry`); 
         setCardDetails(response.data);
       } catch (err) {
         setError(err.message || "Failed to fetch data");

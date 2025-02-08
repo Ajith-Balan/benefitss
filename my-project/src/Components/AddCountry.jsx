@@ -43,7 +43,7 @@ const AddCountry = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const response = await axios.post("http://localhost:3003/api/addcountry", formData, {
+      const response = await axios.post(`${import.meta.env.VITE_APP_BACKEND}/api/addcountry`, formData, {
         headers: { "Content-Type": "application/json" },
       });
       setMessage(response.data.message);

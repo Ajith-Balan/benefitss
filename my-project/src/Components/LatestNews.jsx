@@ -17,7 +17,7 @@ const LatestNews = () => {
 
     const getData = async () => {
       try {
-        const response = await axios.get("http://localhost:3003/api/getnews"); 
+        const response = await axios.get(`${import.meta.env.VITE_APP_BACKEND}/api/getnews`); 
         setData(response.data);
       } catch (error) {
         console.error("Error fetching news:", error);

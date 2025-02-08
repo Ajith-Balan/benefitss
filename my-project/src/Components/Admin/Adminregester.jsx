@@ -32,7 +32,7 @@ const AdminRegister = () => {
     }
 
     try {
-      const response = await axios.post("http://localhost:3003/api/adminsignup", formData, {
+      const response = await axios.post(`${import.meta.env.VITE_APP_BACKEND}/api/adminsignup`, formData, {
         headers: { "Content-Type": "application/json" },
       });
 

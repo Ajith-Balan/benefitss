@@ -12,7 +12,7 @@ const Country = () => {
     const fetchCardDetails = async () => {
       try {
         setLoading(true);
-        const response = await axios.get("http://localhost:3003/api/getcountry");
+        const response = await axios.get(`${import.meta.env.VITE_APP_BACKEND}/api/getcountry`);
         setCardDetails(response.data);
       } catch (err) {
         setError(err.message || "Failed to fetch data");
@@ -29,7 +29,7 @@ const Country = () => {
     if (!window.confirm("Are you sure you want to delete this country?")) return;
 
     try {
-      await axios.delete(`http://localhost:3003/api/deletecountry/${id}`);
+      await axios.delete(`${import.meta.env.VITE_APP_BACKEND}/api/deletecountry/${id}`);
       setCardDetails((prev) => prev.filter((card) => card._id !== id));
     } catch (err) {
       alert("Failed to delete country");

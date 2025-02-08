@@ -17,7 +17,7 @@ const Login = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const response = await axios.post("http://localhost:3003/api/login", formData);
+      const response = await axios.post(`${import.meta.env.VITE_APP_BACKEND}/api/login`, formData);
       toast.success('Login successful!');
 
       localStorage.setItem("token", response.data.token);

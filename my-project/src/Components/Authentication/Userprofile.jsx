@@ -28,13 +28,13 @@ const Profile = () => {
                     return;
                 }
 
-                const res = await axios.get("http://localhost:3003/api/home", {
+                const res = await axios.get(`${import.meta.env.VITE_APP_BACKEND}/api/home`, {
                     headers: { Authorization: `Bearer ${token}` },
                 });
 
                 if (res.data) {
                     setUser(res.data);
-                    const subRes = await axios.get(`http://localhost:3003/api/getsub/${userId}`, {
+                    const subRes = await axios.get(`${import.meta.env.VITE_APP_BACKEND}/api/getsub/${userId}`, {
                         headers: { Authorization: `Bearer ${token}` },
                     });
                     setSubscription(subRes.data || null);
@@ -59,7 +59,7 @@ const Profile = () => {
 
     if (loading) return <p className="text-center text-gray-500">Loading user details...</p>;
 
-    const referralLink = `http://localhost:3003/register/${user?.invitecode || ""}`;
+    const referralLink = `${import.meta.env.VITE_APP_BACKEND}/register/${user?.invitecode || ""}`;
 
     const copyToClipboard = () => {
         navigator.clipboard.writeText(referralLink).then(() => {

@@ -39,7 +39,7 @@ const generateUserCode = () => {
     }
 
     try {
-      const response = await axios.post("http://localhost:3003/api/regester", formData);
+      const response = await axios.post(`${import.meta.env.VITE_APP_BACKEND}`, formData);
       toast.success(`Registration successful! Your referral code is ${response.data.invitecode}`);
       setTimeout(() => navigate("/login"), 2000);
     } catch (error) {

@@ -18,7 +18,7 @@ const CountryDetails = () => {
 
   const getData = async () => {
     console.log(id);
-    const res = await axios.get(`http://localhost:3003/api/getdatas/${id}`);
+    const res = await axios.get(`${import.meta.env.VITE_APP_BACKEND}/api/getdatas/${id}`);
     console.log(res.data);
     setData({ ...res.data });
   };

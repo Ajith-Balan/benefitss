@@ -15,7 +15,7 @@ const Refrals = () => {
       }
       try {
         const { data } = await axios.get(
-          `http://localhost:3003/api/check-subscription/${userId}`
+          `${import.meta.env.VITE_APP_BACKEND}/api/check-subscription/${userId}`
         );
         setIsSubscribed(data.subscribed);
       } catch (error) {
@@ -33,7 +33,7 @@ const Refrals = () => {
         navigate("/login");
         return;
       }
-      const { data } = await axios.post("http://localhost:3003/api/createorder");
+      const { data } = await axios.post(`${import.meta.env.VITE_APP_BACKEND}/api/createorder`);
       const options = {
         key: "rzp_test_kZ85G3MYrmQk4J",
         amount: data.amount,
@@ -43,7 +43,7 @@ const Refrals = () => {
         order_id: data.id,
         handler: async function (response) {
           try {
-            const res = await axios.post("http://localhost:3003/api/verify", {
+            const res = await axios.post(`${import.meta.env.VITE_APP_BACKEND}/api/verify`, {
               razorpay_payment_id: response.razorpay_payment_id,
               razorpay_order_id: response.razorpay_order_id,
               razorpay_signature: response.razorpay_signature,

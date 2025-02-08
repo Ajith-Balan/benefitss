@@ -18,7 +18,7 @@ const News = () => {
 
       const getData = async () => {
       try {
-        const response = await axios.get("http://localhost:3003/api/getnews");
+        const response = await axios.get(`${import.meta.env.VITE_APP_BACKEND}/api/getnews`);
         setData(response.data); 
       } catch (error) {
         console.error("Error fetching news:", error);
@@ -32,7 +32,7 @@ const News = () => {
   const handleDelete = async (id) => {
     try {
     
-      await axios.delete(`http://localhost:3003/api/deletenews/${id}`);
+      await axios.delete(`${import.meta.env.VITE_APP_BACKEND}/api/deletenews/${id}`);
 
       setData(data.filter((news) => news._id !== id)); 
     } catch (error) {
