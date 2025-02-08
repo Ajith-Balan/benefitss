@@ -15,7 +15,7 @@ const startServer = async () => {
     try {
         await connection();  // Ensure the database connects first
         app.listen(process.env.PORT, () => {
-            console.log(`Server running at http://localhost:${PORT}`);
+            console.log(`Server running at http://localhost:${process.env.PORT}`);
         });
     } catch (error) {
         console.error("Error in server integration:", error);
