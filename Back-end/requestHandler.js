@@ -1,7 +1,7 @@
 import countrySchema from './Modeles/country.model.js'
 import pkg from 'jsonwebtoken'
 import user from './Modeles/user.model.js'
-import bcrypt from 'bcrypt'
+import bcrypt from 'bcryptjs'
 import Razorpay from 'razorpay'
 import crypto from 'crypto'
 import order from './Modeles/Subscription.model.js'
@@ -76,16 +76,16 @@ export async function getData(req,res){
 
 
 export async function userRegester(req,res){
-  const {name,email,referredBy,password,cpassword,subscription}=req.body;
+  const {name,email,invitecode,usercode,password,cpassword}=req.body;
 
-   if(!(name&&email&&referredBy&&password&&cpassword&&subscription))
+   if(!(name&&email&&password&&cpassword))
     return res.status(400).send("fill all fields")
 
    if(password!==cpassword)
     return res.status(404).send("password not matched")
 
 bcrypt.hash(password,10).then(async(hpassword)=>{
-user.create({name,password:hpassword,email}).then(()=>{
+user.create({name,invitecode,usercode,password:hpassword,email}).then(()=>{
     return res.status(201).send({msg:"successfully created"})
 
 })

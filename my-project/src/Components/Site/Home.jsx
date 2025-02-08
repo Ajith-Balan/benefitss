@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom';
 
 const Home = () => {
   return (
-    <div className="min-h-full bg-white flex items-center justify-center ">
+    <div className="min-h-full bg-white flex items-center mt-40 justify-center ">
       <div className="container mx-auto py-5 px-4 border">
         <motion.div
           className="grid grid-cols-1 md:grid-cols-2 gap-5 items-center mb-16"

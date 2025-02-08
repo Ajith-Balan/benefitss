@@ -1,18 +1,29 @@
-import React, { useState } from "react";
+import React, { useState,useEffect } from "react";
 import axios from "axios";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
-import { useNavigate } from "react-router-dom";
+import { useNavigate,useParams } from "react-router-dom";
 
 const Register = () => {
-  const [formData, setFormData] = useState({
+  const {id} = useParams()
+
+const generateUserCode = () => {
+  return Math.random().toString(36).substring(2, 7).toUpperCase();
+};
+
+    const [formData, setFormData] = useState({
     name: "",
     email: "",
     password: "",
     cpassword: "",
-    referredBy: "",
-    subscription:"pending"
+    invitecode: `${id || " "}`,
+    usercode: "",
   });
+
+  useEffect(() => {
+    setFormData((prev) => ({ ...prev, usercode: generateUserCode() }));
+  }, []);
+
   const navigate = useNavigate();
 
   const handleChange = (e) => {
@@ -29,7 +40,7 @@ const Register = () => {
 
     try {
       const response = await axios.post("http://localhost:3003/api/regester", formData);
-      toast.success(`Registration successful! Your referral code is ${response.data.referralCode}`);
+      toast.success(`Registration successful! Your referral code is ${response.data.invitecode}`);
       setTimeout(() => navigate("/login"), 2000);
     } catch (error) {
       console.error(error);
@@ -116,15 +127,14 @@ const Register = () => {
               </div>
 
               <div>
-                <label className="text-gray-800 text-sm mb-2 block">referredBy</label>
+                <label className="text-gray-800 text-sm mb-2 block">Invite Code</label>
                 <input
-                  name="referredBy"
+                  name="invitecode"
                   type="text"
-                  required
-                  value={formData.referredBy}
+                  value={formData.invitecode}
                   onChange={handleChange}
                   className="bg-transparent border border-gray-400 w-full text-gray-800 text-sm pl-4 pr-10 py-2.5 rounded focus:border-black outline-none"
-                  placeholder="Refferal id"
+                  placeholder="invite code"
                 />
               </div>
 

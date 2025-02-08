@@ -23,7 +23,7 @@ const Login = () => {
       localStorage.setItem("token", response.data.token);
             localStorage.setItem('userId', response.data.userId);
 
-           navigate('/refrel');
+           navigate('/user');
     } catch (error) {
       toast.error('Invalid credentials, please try again.');
     }
@@ -112,7 +112,7 @@ const Login = () => {
               </button>
               <div>
                 <p className="text-gray-800 text-sm text-center mt-6 flex">Don't have an account? <Link to={`/regester`}><h1 href="javascript:void(0);" className="text-blue-600 font-semibold hover:underline ml-1 whitespace-nowrap">Register here</h1></Link> </p>
-                <p className="text-gray-800 text-sm text-center mt-6 flex">Are you an admin <Link to={`/adminlogin`}><h1 href="javascript:void(0);" className="text-blue-600 font-semibold hover:underline ml-1 whitespace-nowrap">Login</h1></Link> </p>
+                <p className="text-gray-800 text-sm text-center mt-6 flex">Are you an admin <Link to={`/admin`}><h1 href="javascript:void(0);" className="text-blue-600 font-semibold hover:underline ml-1 whitespace-nowrap">Login</h1></Link> </p>
               </div>
             </div>
           </form>

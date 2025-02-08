@@ -32,7 +32,7 @@ const Site = () => {
           <Why/>
           <Consultant/>
           <HappyClients/>
-          {/* <Referrals/> */}
+          <Referrals/>
         
        
         </div>

@@ -12,7 +12,9 @@ const Navbar = () => {
 
   return (
     <>
-           <nav className="bg-white shadow-md">
+    <div className=" top-0 fixed w-full z-50">
+
+           <nav className="bg-white shadow-md ">
         <div className="container mx-auto px-4 py-4 flex items-center justify-between">
         <Link to={`/`}>
         <div className="text-2xl font-bold text-red-600 flex items-center">
@@ -182,6 +184,8 @@ const Navbar = () => {
         </Link>
         </div>
       </nav>
+      </div>
+
     </>
   );
 };

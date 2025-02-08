@@ -20,7 +20,7 @@ import Immigration from './Components/Second/Imigration'
 import Country from './Components/Admin/Country'
 import Countries from './Components/Admin/Country'
 import News from './Components/Admin/News'
-
+import MarqueeText from './Components/MarqueeText'
 const App = () => {
   return (
 
@@ -29,7 +29,6 @@ const App = () => {
 <BrowserRouter>
 <Navbar/>
 <Routes>
-R
   <Route path='/' Component={Site}/>
   <Route path='/addcountry' Component={AddCountry}/>
   <Route path='/addnews' Component={Addnews}/>
@@ -39,8 +38,10 @@ R
   <Route path='/immigration' Component={Immigration}/>
   <Route path='/job' Component={Job}/>
   <Route path='/regester' Component={Register}/>
+  <Route path='/register/:id' Component={Register}/>
+  
   <Route path='/login' Component={Login}/>
-  <Route path='/country-deatiles/:id' Component={CountryDeatiles}/>
+  <Route path='/country-details/:id' Component={CountryDeatiles}/>
   <Route path='/refrel' Component={Refrals}/>
   <Route path='/adminlogin' Component={AdminLogin}/>
   <Route path='/admin' Component={AdminDashboard}/>

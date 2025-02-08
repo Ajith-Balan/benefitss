@@ -2,7 +2,7 @@ import React, { useEffect } from "react";
 import AOS from "aos";
 import "aos/dist/aos.css";
 import { FaArrowRight } from "react-icons/fa";
-
+import { Link } from "react-router-dom";
 const Services = () => {
   useEffect(() => {
     AOS.init({
@@ -16,16 +16,21 @@ const Services = () => {
       img: "https://didmdw8v48h5q.cloudfront.net/wp-content/uploads/2023/01/Quiz_-Which-Destination-Country-Should-I-Study-Abroad-In.png",
       text: "Study Abroad",
       pg: "Explore best study packages with us",
+      link: "/study"
     },
     {
       img: "https://5.imimg.com/data5/SELLER/Default/2022/7/FE/CC/BX/62175184/placement-consultancy-in-india-placement-agencies-in-india-accord-consultants-interview-tips.png",
       text: "Job Consultancy",
       pg: "You want to set your carrier we have wide opportunities",
+      link: "/job"
+
     },
     {
       img: "https://lorien.finance/blog/wp-content/uploads/2024/10/Education-Loan-for-Abroad-Studies.jpg",
       text: "Visiting Visa",
       pg: "Curabitur vehicula urna sit amet neque luctus, at efficitur .",
+      link: "/visiting-visa"
+
     },
     
   ];
@@ -64,9 +69,12 @@ const Services = () => {
                 {service.text}
               </h3>
               <p className="text-gray-100 text-xs mb-6 font-space-grotesk">{service.pg}</p>
+              <Link to={`${service.link}`}>
               <button className="flex items-center justify-start gap-2 font-space-grotesk text-white px-4 transition-colors duration-300 border-b border-bg-white">
                 Contact now <FaArrowRight />
               </button>
+              </Link>
+             
             </div>
           </div>
         ))}

@@ -8,6 +8,8 @@ router.route('/addcountry').post(request.addCountry )
 router.route('/getcountry').get(request.getCountry )
 router.route('/getdatas/:id').get(request.getData )
 router.route('/regester').post(request.userRegester )
+router.route('/regester/:id').post(request.userRegester )
+
 router.route('/adminsignup').post(request.adminRegester )
 router.route('/login').post(request.userLogin )
 router.route('/adminsignin').post(request.adminLogin )
