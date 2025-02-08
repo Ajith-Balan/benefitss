@@ -11,12 +11,15 @@ app.use(cors());
 app.use(express.json({limit:"50mb"}));
 app.use('/api',router);
 
-connection().then(()=>{
-    app.listen(process.env.PORT,()=>{
-        console.log(`http://localhost:${process.env.PORT}`);
-        
-    })
-}).catch((error)=>{
-    console.log("Error in server integration");
-    
-})
+const startServer = async () => {
+    try {
+        await connection();  // Ensure the database connects first
+        app.listen(process.env.PORT, () => {
+            console.log(`Server running at http://localhost:${PORT}`);
+        });
+    } catch (error) {
+        console.error("Error in server integration:", error);
+    }
+};
+
+startServer();
